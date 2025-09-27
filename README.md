@@ -1,9 +1,12 @@
 ### Note by me (CoffeeLake)
 
 This is a last found version of DoDi's VB decompiler
-which sometimes I've trying to demangle and restrict.
+which sometimes I'm trying to demangle and restrict.
 My main task of it - determine Microsoft Visual Basic 2.0/3.0
 specifics and runtime behavior.
+
+The information about Visual Basic 4.0 exists here and in demangled
+ActiveX objects of VB SemiDecompiler by VBGamer45. 
 
 I've published my instance of found software under GNU GPL license
 because this information already public. And my modifications of this
