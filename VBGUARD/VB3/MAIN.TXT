@@ -1,0 +1,315 @@
+' main.txt - global definitions
+Global Const VERSION_TYPE = "e"
+Global Const ERR_FileNotFound = "File not found"
+Global Const ERR_NOT_A_RES_FILE = "Not a RES file"
+Global Const ERR_NO_VER_INFO_FOUND = "Found no Version Information"
+Global Const SAVE_AS = "Save As ..."
+Global Const PROGRAM_EXECUTABLES = "Program|*.exe"
+Global Const PROGRAM_RESOURCES = "Resource|*.res"
+Global Const ERR_CannotCopytoSameFile = "Cannot copy to same file"
+Global Const VERSIONINFO_RES = "VersionInfo Resource"
+Global Const PROGRAM_TO_PROTECT = "Program to protect"
+Global Const PROGRAM_PROTECED = "Program protected"
+Global FIXED_ONE_BYTE_STRING As String * 1
+Type T0446
+  M044F As String * 2
+End Type
+
+Global gv004C As T0446
+Type T045A
+  M0463 As Integer
+End Type
+
+Global gv0060 As T045A
+Type T046E
+  M044F As String * 4
+End Type
+
+Type T0477
+  M0480 As Long
+End Type
+
+Type T0485
+  M048E As Integer
+  M0494 As Integer
+End Type
+
+Global gv009E As T046E
+Global gv00A4 As T0477
+Type T04AC
+  M04B8 As Variant
+  M04BD As Integer
+  M04C5 As Integer
+  M015D As String * 8
+  M04CE As String * 10
+  M04D6 As Integer
+  M04DE As Integer
+  M04E5 As Integer
+  M04EC As Integer
+  M04F3 As Integer
+  M04FA As Integer
+End Type
+
+Global gv011C As T04AC
+Global Const VERSION = "1.0"
+Type T0648
+  M065C As Long
+  M0668 As Long
+  M0678(3) As Integer
+  M0687(3) As Integer
+  M0696 As Long
+  M06A7 As Long
+  M06B4 As Integer
+  M06C0 As Integer
+  M06CC As Long
+  M06D8 As Long
+  M06E7 As Long
+  M06F5 As Long
+End Type
+
+Type T0703
+  M044F As String * 52
+End Type
+
+Type T070D
+  M0717 As Integer
+  M071F As Integer
+  M0727 As String * 16
+  M072F As T0648
+End Type
+
+Type T073B
+  M0480 As Integer
+  M0744 As Integer
+  M044F(12) As String
+End Type
+
+Type T0770
+  M072F As T0648
+  M077B As Integer
+  M0789 As Integer
+  M0792(1 To 2) As T073B
+  M079A As Integer
+  M07A5 As String
+  M07B4 As Integer
+End Type
+
+Type T07C8
+  M07D1 As String * 1
+  M0463 As Integer
+End Type
+
+Type TYPE_RES_INFO
+  M07E0 As T07C8
+  M07E7 As T07C8
+  M07ED As Integer
+  M0717 As Long
+End Type
+
+Type MZ_FileHeader_Struct
+  Signature As Integer
+  Extra_Bytes As Integer
+  Pages As Integer
+  Reloc_Items As Integer
+  Header_Size As Integer
+  Min_Alloc As Integer
+  Max_Alloc As Integer
+  Initial_SS As Integer
+  Initial_SP As Integer
+  Check_Sum As Integer
+  Initial_IP As Integer
+  Initial_CS As Integer
+  RelocTable As Integer
+  Overlay As Integer
+  Fill(15) As Integer
+  Offset_NE_Header As Long
+End Type
+
+Type NE_FileHeader_Struct
+  Signature As Integer
+  M08B6 As Integer
+  ENTRYTABLE As Integer
+  M08D2 As Integer
+  M08E4 As Integer
+  M08EC As Integer
+  M07ED As Integer
+  M08F4 As Integer
+  M08FE As Integer
+  M090A As Integer
+  Initial_IP As Integer
+  Initial_CS As Integer
+  M0915 As Integer
+  M091F As Integer
+  SegmentTableEntryCount As Integer
+  ModuleTableEntryCount As Integer
+  M093B As Integer
+  SegmentTableOffset As Integer
+  RESOURCETABLE As Integer
+  residentNameTable As Integer
+  ModuleReferenceTable As Integer
+  IMPORTTABLE As Integer
+  NonResidentNameTable As Long
+  M0977 As Integer
+  MiscFlags As Integer
+  M098C As Integer
+  M0999 As Integer
+  M09A5 As Integer
+  M09AE As Integer
+  M09B7 As Integer
+  M09C0 As Integer
+End Type
+
+'Signature_NE                 Signature As Integer
+'LinkerVersion                M08B6 As Integer
+'LinkerRevision               EntryTable As Integer
+'EntryTable                   M08D2 As Integer
+'EntryTableSize               M08E4 As Integer
+'CRC32                        M08EC As Integer
+'Type                         M07ED As Integer
+'AutoDataSegNumber            M08F4 As Integer
+'LocalHeapSize                M08FE As Integer
+'StackSize                    M090A As Integer
+'Initial_IP                   Initial_IP As Integer
+'Initial_CS                   Initial_CS As Integer
+'Initial_SP                   M0915 As Integer
+'Initial_SS                   M091F As Integer
+'SegmentTableEntryCount       SegmentTableEntryCount As Integer
+'ModuleTableEntryCount        ModuleTableEntryCount As Integer
+'Non-ResidentNameTableSize    M093B As Integer
+'SegmentTable                 SegmentTableOffset As Integer
+'ResourceTable                ResourceTable As Integer
+'ResidentNameTable            ResidentNameTable As Integer
+'ModuleReferenceTable         ModuleReferenceTable As Integer
+'ImportTable                  ImportTable As Integer
+'Non-residentNameTable        NonResidentNameTable As Long
+'EntryPointCountMoveable      M0977 As Integer
+'Alignment                    MiscFlags As Integer
+'NumberReservedSegment        M098C As Integer
+'TargetOS                     M0999 As Integer
+'MiscFlags                    M09A5 As Integer
+'FastLoadOffset               M09AE As Integer
+'FastLoadSize                 M09B7 As Integer
+'Reserved                     M09C0 As Integer
+'WindowsRevision
+'WindowsVersion
+
+
+
+
+Global hFile As Integer
+Global MZ_FileHeader As MZ_FileHeader_Struct
+Global NE_FILEHEADER As NE_FileHeader_Struct
+Global Const MZ_MAGIC = 23117 ' &H5A4D%
+Global Const Offset_NE_Header = 17742 ' &H454E%
+Type EntryTableStruct2
+  M07ED As String * 1
+  M0A4A As Integer
+End Type
+
+Type EntryTableStruct
+  M07ED As String * 1
+  M0A5F As Integer
+  M0A68 As String * 1
+  M0A4A As Integer
+End Type
+
+Global gv05EC As Integer
+Global gv05F0 As Integer
+Global gv05F4 As Integer
+Global Segments As Integer
+Global NE_Flags As Integer
+Global gv05FC As Integer
+Global gv05FE As Integer
+Type T0AD2
+  Offset_Start As Integer
+  M0AE6 As Integer
+  M0AED As Integer
+End Type
+
+Type VBCODEStruct
+  M0AE6 As String * 1
+  M0AED As String * 1
+  Offset_Start As Integer
+  M0B01 As Integer
+  M0B07 As Integer
+End Type
+
+Type SegmentStruct
+  M0B77 As Integer 'sector offset
+  M0B81 As Integer 'sector length
+  M07ED As Integer 'flags
+  M0B8B As Integer 'minalloc
+End Type
+
+Global Segs() As SegmentStruct
+Global Const gc06CA = 256 ' &H100%
+Type ResourceTableType
+  M07E0 As Integer
+  M0C00 As Integer
+  M09B7 As Long
+End Type
+
+Type T0C07
+  Offset_Start As Integer
+  Offset_NE_Header As Integer
+  M07ED As Integer
+  M07E7 As Integer
+  M09B7 As Long
+End Type
+
+Global Const gc0730 = 10 ' &HA%
+Global Const gc0738 = 16 ' &H10%
+Global Const gc073A = 16 ' &H10%
+Global gv073E() As ResourceTableType
+Global gv0770() As Integer
+Global gv07A2 As Integer
+Global gv07A6() As T0C07
+Global gv07D8 As Integer
+Type NE_Object_Type
+  Offset_Start As Long
+  Offset_NE_Header As Long
+  RelStart As Integer
+  RelSize As Integer
+End Type
+
+Global Const MZ_HEADER = 1 ' &H1%
+Global Const NE_HEADER = 2 ' &H2%
+Global Const SEGMENTTABLE = 3 ' &H3%
+Global Const RESOURCETABLE = 4 ' &H4%
+Global Const gc0816 = 5 ' &H5%
+Global Const gc0818 = 6 ' &H6%
+Global Const MODULE_REF_TABLE = 7 ' &H7%
+Global Const IMPORTTABLE = 8 ' &H8%
+Global Const ENTRYTABLE = 9 ' &H9%
+Global Const NonResidentNameTable = 10 ' &HA%
+
+Global Const VBCODE = 11 ' &HB%
+Global Const RES_DATA2 = 12 ' &HC%
+Global Objects(12) As NE_Object_Type
+Global gv083E As Integer
+Global gv0840 As Integer
+Global gv0842 As Integer
+Global Started As Integer
+Type T0E25
+  M0E33 As Integer
+  M0E3C As Integer
+  M0E45 As Integer
+  M0E4C As String * 9
+  M0E57 As Integer
+  M0E62 As Integer
+End Type
+
+Type T0E6C
+  M0E7C As String * 1
+  M07D1 As String * 1
+  M0E86 As Integer
+  M0E8E As Integer
+  M0E98 As Integer
+  M07ED As String * 1
+  M0EA2 As Integer
+End Type
+
+Global Const gc08C6 = 67 ' &H43%
+Global Const gc08C8 = 70 ' &H46%
+Global Const gc08CA = 88 ' &H58%
+

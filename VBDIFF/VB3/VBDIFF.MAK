@@ -1,0 +1,12 @@
+FRM1.FRM
+MAIN.TXT
+MODULE1.BAS
+MODULE2.BAS
+MODULE3.BAS
+FRM2.FRM
+FRM3.FRM
+ProjWinSize=152,402,248,215
+ProjWinShow=2
+IconForm="frm1"
+Title="VB FileCompare"
+ExeName="VBDIFF.EXE"

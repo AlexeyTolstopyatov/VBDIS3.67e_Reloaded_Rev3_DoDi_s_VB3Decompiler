@@ -1,0 +1,63 @@
+' main.txt - global definitions
+Global Const gc0006 = "e"
+Global Const gc000A = "Select a Listbox!"
+Global Const gc000E = "Select 2 matching lines"
+Global Const gc0012 = "Select 2 different files"
+Global Const gc0016 = "<no more differences>"
+Global Const gc001A = "Line not found"
+Global Const gc001E = "2.03"
+Global gv0022(1) As String
+Global gv0038 As Integer
+Global gv003A As Integer
+Global gv003C As Long
+Global gv0040 As Long
+Type T045C
+  M0467 As Long
+  M046E As String
+End Type
+
+Global gv0066(15) As T045C
+Global gv007E(15) As T045C
+Global gv0094 As Integer
+Global gv0096 As Integer
+Global gv0098 As Integer
+Type T04A3
+  M04AC As String * 2
+End Type
+
+Global gv00B2 As T04A3
+Type T04B7
+  M04C0 As Integer
+End Type
+
+Global gv00C6 As T04B7
+Type T04CB
+  M04AC As String * 4
+End Type
+
+Type T04D4
+  M04DD As Long
+End Type
+
+Type T04E2
+  M04EB As Integer
+  M04F1 As Integer
+End Type
+
+Global gv0104 As T04CB
+Global gv010A As T04D4
+Type T0509
+  M0515 As Variant
+  M051A As Integer
+  M0522 As Integer
+  M01D2 As String * 8
+  M052B As String * 10
+  M0533 As Integer
+  M053B As Integer
+  M0542 As Integer
+  M0549 As Integer
+  M0550 As Integer
+  M0557 As Integer
+End Type
+
+Global gv0182 As T0509

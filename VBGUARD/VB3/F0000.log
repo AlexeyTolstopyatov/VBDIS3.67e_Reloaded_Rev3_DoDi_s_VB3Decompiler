@@ -1,0 +1,19 @@
+Line 19: Class SSFrame of control SSFrame1 was not a loaded control class.
+Line 28: Class SSCommand of control control2 was not a loaded control class.
+Line 46: Class SSFrame of control control4 was not a loaded control class.
+Line 55: Class SSCommand of control control5 was not a loaded control class.
+Line 73: Class SSFrame of control control7 was not a loaded control class.
+Line 81: Class SSCommand of control control8 was not a loaded control class.
+Line 99: Class CommonDialog of control OpenFileDlg was not a loaded control class.
+Line 20: The property name Caption in SSFrame1 is invalid.
+Line 21: The property name Font3D in SSFrame1 is invalid.
+Line 29: The property name Caption in control2 is invalid.
+Line 30: The property name Font3D in control2 is invalid.
+Line 47: The property name Caption in control4 is invalid.
+Line 48: The property name Font3D in control4 is invalid.
+Line 56: The property name Caption in control5 is invalid.
+Line 57: The property name Font3D in control5 is invalid.
+Line 74: The property name Caption in control7 is invalid.
+Line 75: The property name Font3D in control7 is invalid.
+Line 82: The property name Caption in control8 is invalid.
+Line 83: The property name Font3D in control8 is invalid.
