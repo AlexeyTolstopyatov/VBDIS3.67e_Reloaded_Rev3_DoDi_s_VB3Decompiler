@@ -23,7 +23,7 @@ Sub ShowErrMsg(p0068 As Variant)
   End If
   
   If VarType(p0068) = 8 Then
-    MsgBox p0068, mc0070, News_from_VB_Discompiler
+    MsgBox p0068, mc0070, gDecompilerNewsStr
     gv7B30 = -1
   Else
     If gv7B32 And p0068 Then Exit Sub
@@ -88,7 +88,7 @@ Dim MsgBoxText As String
   End Select
   If Len(MsgBoxText) Then
     If Right$(MsgBoxText, 1) = "!" Then MsgBoxText = MsgBoxText & Chr$(10) & "You may send this program to DoDi to improve VB Discompiler"
-    MsgBoxResponse = MsgBox(MsgBoxText, MsgBoxStyle Or MsgBoxButtons, News_from_VB_Discompiler)
+    MsgBoxResponse = MsgBox(MsgBoxText, MsgBoxStyle Or MsgBoxButtons, gDecompilerNewsStr)
     Select Case MsgBoxResponse
     Case vbRetry
       Exit Sub
@@ -106,14 +106,14 @@ Dim MsgBoxText As String
   Select Case l0080
   Case 0
   Case gc7B82
-    MsgBox "For this program you'll need an upgraded VB Discompiler", vbCritical, ErrorSituationVBDiscompiler
+    MsgBox "For this program you'll need an upgraded VB Discompiler", vbCritical, gErrorSituationStr
     MsgBoxResponse = vbIgnore
   Case gc7B80
-    MsgBoxResponse = MsgBox(gc032A, 48 + 1, ErrorSituationVBDiscompiler)
+    MsgBoxResponse = MsgBox(gSevereErrorsStr, 48 + 1, gErrorSituationStr)
   Case gc7B7E
-    MsgBoxResponse = MsgBox(gc032E, 32 + 1, ErrorSituationVBDiscompiler)
+    MsgBoxResponse = MsgBox(gInternalErrorsBuggyCodeStr, 32 + 1, gErrorSituationStr)
   Case Else
-    MsgBoxResponse = MsgBox(gc0332, 64 + 1, ErrorSituationVBDiscompiler)
+    MsgBoxResponse = MsgBox(gLatestVersionAdStr, 64 + 1, gErrorSituationStr)
   End Select
   
   Select Case MsgBoxResponse

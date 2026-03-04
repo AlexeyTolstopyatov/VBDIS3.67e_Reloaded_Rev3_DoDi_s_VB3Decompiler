@@ -1,147 +1,144 @@
-'Attribute VB_Name = "MAIN"
+'Attribute VB_Name = "modMain"
 Option Explicit
 'Option Base 1
 
 ' main.txt - global definitions
 Type T1267
-  M1275 As Integer
-  M127E As Integer
-  M1287 As Integer
-  M128E As String * 9
-  M1299 As Integer
-  M12A4 As Integer
+    M1275 As Integer
+    M127E As Integer
+    M1287 As Integer
+    M128E As String * 9
+    M1299 As Integer
+    M12A4 As Integer
 End Type
 
 Type VB_Main_Struct
-  Type As String * 1
-  length As String * 1
-  
-  ResIDAssoc  As Integer
-  M_2_curr As Integer
-  M_3_next As Integer
-  M_4_sub As String * 1
-  M_5_Size As Integer
+    Type As String * 1
+    length As String * 1
+
+    ResIDAssoc  As Integer
+    M_2_curr As Integer
+    M_3_next As Integer
+    M_4_sub As String * 1
+    M_5_Size As Integer
 End Type
 
-Type T253E
-  Type_3 As Integer
-  memEater1 As String * 1
-  
-  ResIDAssoc As Integer
-  
-  M_2_curr As Integer
-  M_3_next As Integer
-  M_4_sub As String * 1
-  M_5_Size As Integer
-  M2548 As Integer
-  M2551 As Integer
+Type TControlItem
+    Type_3 As Integer
+    memEater1 As String * 1
+
+    ResIDAssoc As Integer
+
+    M_2_curr As Integer
+    M_3_next As Integer
+    M_4_sub As String * 1
+    M_5_Size As Integer
+    M2548 As Integer
+    M2551 As Integer
 End Type
-
-
-
-
 
 Type T1379
-  frmOffset As Integer
-  M1390 As Integer
-  M139C As Integer
-  M13A7 As Integer
+    frmOffset As Integer
+    M1390 As Integer
+    M139C As Integer
+    M13A7 As Integer
 End Type
 
 Type T13D2
-  frmOffset As Integer
-  M13DF As Integer
-  Type_3 As Integer
-  Size_M13F4 As Integer
+    frmOffset As Integer
+    M13DF As Integer
+    Type_3 As Integer
+    Size_M13F4 As Integer
 End Type
 
 Type T1425
-  M1432 As Integer
-  M143D As Integer
-  M1445 As Integer
-  M144F As Integer
-  M1458 As Integer
-  Type_3 As Integer
+    M1432 As Integer
+    M143D As Integer
+    M1445 As Integer
+    M144F As Integer
+    M1458 As Integer
+    Type_3 As Integer
 End Type
 
 Type T1477
-  M1432 As Integer
-  M1481 As Integer
+    M1432 As Integer
+    M1481 As Integer
 End Type
 
 Type T149E
-  M14AE As String * 3
-  Type_3 As String * 1
-  M14B9 As String * 1
-  M14C1 As Long
+    M14AE As String * 3
+    Type_3 As String * 1
+    M14B9 As String * 1
+    M14C1 As Long
 End Type
 
 Type T14C9
-  mSize6 As Long
-  M14E1 As String * 1
+    mSize6 As Long
+    M14E1 As String * 1
 End Type
 
 Type T14EB
-  Type_3 As Integer
-  M14F8 As Integer
-  frmOffset As Integer
-  M1502 As Integer
-  M150C As Integer
-  M1516 As Integer
-  SubOrFunc As Integer
-  PubOrPrivate As Integer
-  M1531 As Integer
-  M1537 As Integer
-  M_5_Size As Integer
-  M153D As Integer
-  Offs As Integer
-  M1551 As Integer
-  M155C As Integer
-  Reserved(15 To 17) As Integer
-  Size As Integer
-  M157B As Integer
-  M1587 As Integer
-  M1592(21 To 22) As Integer
-  M159D As Integer
-  M15A9 As Integer
-  M15B4 As Integer
-  M15BE As Long
+    Type_3 As Integer
+    M14F8 As Integer
+    frmOffset As Integer
+    M1502 As Integer
+    M150C As Integer
+    M1516 As Integer
+    SubOrFunc As Integer
+    PubOrPrivate As Integer
+    M1531 As Integer
+    M1537 As Integer
+    M_5_Size As Integer
+    M153D As Integer
+    Offs As Integer
+    M1551 As Integer
+    M155C As Integer
+    Reserved(15 To 17) As Integer
+    Size As Integer
+    M157B As Integer
+    M1587 As Integer
+    M1592(21 To 22) As Integer
+    M159D As Integer
+    M15A9 As Integer
+    M15B4 As Integer
+    M15BE As Long
 End Type
 
 Type T15C8
-  Type_3 As Integer
-  M14F8 As Integer
-  frmOffset As Integer
-  M1502(3 To 6) As Integer
-  M15D5 As Integer
-  M15E0(8 To 12) As Integer
-  M15E6 As Integer
-  M15EF As Integer
-  M15F5 As Integer
-  M1600(16 To 28) As Integer
-  M_4_sub As Integer
-  M1607 As Long
+    Type_3 As Integer
+    M14F8 As Integer
+    frmOffset As Integer
+    M1502(3 To 6) As Integer
+    M15D5 As Integer
+    M15E0(8 To 12) As Integer
+    M15E6 As Integer
+    M15EF As Integer
+    M15F5 As Integer
+    M1600(16 To 28) As Integer
+    M_4_sub As Integer
+    M1607 As Long
 End Type
 
- Global Const vbRetryCancel = 5  ' &H5%
- Global Const vbAbortRetryIgnore = 2
- Global Const vbRetry = 4 ' &H4%
- Global Const vbCancel = 2 ' &H2%
- Global Const vbAbort = 3 ' &H3%
- Global Const vbNo = 7 ' &H7%
+Global Const vbRetryCancel = 5  ' &H5%
+Global Const vbAbortRetryIgnore = 2
+Global Const vbRetry = 4 ' &H4%
+Global Const vbCancel = 2 ' &H2%
+Global Const vbAbort = 3 ' &H3%
+Global Const vbNo = 7 ' &H7%
 
-Global Const gc031A = "3.67"
-Global Const gc031E = "e"
-Global Const ErrorSituationVBDiscompiler = "Error Situation VB Discompiler"
+Global Const gVersionStr= "3.67"
+Global Const gRevisionStr = "e"
+Global Const gErrorSituationStr = "Error Situation VB Discompiler"
+Global Const gSevereErrorsStr = "Severe errors may cause the Discompiler to crash"
+Global Const gInternalErrorsBuggyCodeStr = "Internal problems, the code created may be buggy"
+Global Const gLatestVersionAdStr = "Do you have the latest edition of VB Discompiler?"
+Global Const gRuntimeErrorStr = "Runtime Error in VB Discompiler"
+Global Const gDecompilerNewsStr = "News from VB Discompiler"
+Global Const gProEditionAdStr = "This option is available only in the Professional version" '
+Global Const gLongNameStr = "Name too long"
 'Global Const gc0326 = "For this program you'll need an upgraded VB Discompiler"
-Global Const gc032A = "Severe errors may cause the Discompiler to crash"
-Global Const gc032E = "Internal problems, the code created may be buggy"
-Global Const gc0332 = "Do you have the latest edition of VB Discompiler?"
-Global Const gc0336 = "Runtime Error in VB Discompiler"
-Global Const News_from_VB_Discompiler = "News from VB Discompiler"
 'Global Const gc033E = "You may send this program to DoDi to improve VB Discompiler"
 'Global Const gc0342 = "Error "
-Global Const gc0346 = "This option is available only in the Professional version"
 'Global Const gc034A = "Found unknown data structures!"
 'Global Const gc034E = "Not a Visual Basic program"
 'Global Const gc0356 = "Found an unknown resource!"
@@ -155,16 +152,15 @@ Global Const gc0346 = "This option is available only in the Professional version
 'Global Const gc037E = "Found an unknown collection!"
 'Global Const gc0382 = "An already known problem occured"
 'Global Const gc0386 = "File not found or wrong version: "
-Global Const gc038A = "Name too long"
 
 
 Global Const sInitializing = "Initializing"
 
-Global Const gc03C6 = "Combining forms und code"
-Global Const gc03CA = "Discompilation finished"
-Global Const gc03CE = "Open "
-Global Const Scanning = "Scanning "
-Global Const gc03DE = "Forms"
+Global Const sCombiningCodeAndForms = "Combining forms und code"
+Global Const sDecompilingFinish = "Discompilation finished"
+Global Const sOpen = "Open "
+Global Const sScanning = "Scanning "
+Global Const sForms = "Forms"
 
 Global Const gc03E6 = "Segments"
 Global Const gc03EA = "Scopes"
@@ -189,7 +185,8 @@ Global Const gc0432 = "Token uses no variable"
 Global Const gc0436 = "Show Variable"
 Global Const gc043A = "Source is not saved in binary format"
 
-Type T19CA
+' DOS Header - documented structure -> All fields are known
+Type TMZHeader
   Signature As Integer
   M19E5 As Integer
   M19EE As Integer
@@ -207,9 +204,13 @@ Type T19CA
   M1A68(15) As Integer
   OffsetToNE As Long
 End Type
-
-
-Type NE_Struct
+' NE Header - documented data structure -> all fields are known
+' Mind: INVALIDCASE may tell about something what extremely needed
+' or for else -> hard to parse, just because entry table has
+' nested variable sized types
+' Import table (see https://alexeytolstopyatov.github.io/notes/2025/09/23/ne-imptab.html)
+' might have unexpected paddings or run-time calls (function names) instead of DLL names  
+Type TNEHeader
   Signature As Integer
   LinkerVer As Integer
   ENTRYTABLE As Integer
@@ -275,7 +276,7 @@ Global Segments As Integer
 Type VBCODEStruct
   M1CA2 As String * 1
   iToken As String * 1
-  Size_M13F4 As Integer
+  Size_M13F4 As Integer ' M13F4's taken from EntryTable 
   M1CB1 As Integer
   M1CB7 As Integer
 End Type
@@ -290,23 +291,26 @@ End Type
 
 Global gv0726() As T1CBD
 Global gv0758 As Integer
-Type T1CDE
+Type TSegment
   SegOffset As Integer
   Size As Integer
   Flags As Integer
-  M1D01 As Integer
+  Alloc As Integer
 End Type
 
-Global Segs() As T1CDE
+Global Segs() As TSegment
 Global Const RELOCINFO = &H100
-Type T1D6D
+
+' Resident Name record contains Pascal String, 
+' that's why TResidentName missing first BYTE
+Type TResidentName
   Name As String
   AddData As Integer
 End Type
 
-Global ResidentNames() As T1D6D
+Global ResidentNames() As TResidentName
 Global ResidentCount As Integer
-Global ResidentNames2() As T1D6D
+Global ResidentNames2() As TResidentName
 Global NonResCount As Integer
 Global VBRUNs() As String
 Global gIn_FileFulPath As String
@@ -314,8 +318,8 @@ Global gCurPath As String
 Global gIn_FileNameAndExt As String
 Global hVBFile As Integer
 Global VBver_11 As Integer
-Global MZ As T19CA
-Global NE As NE_Struct
+Global MZ As TMZHeader
+Global NE As TNEHeader
 Global SegmentAlign As Integer
 Global ResAlignment%
 Global bPrjFilesCreated As Integer
@@ -439,14 +443,14 @@ Type ResourceTableRootType
   Reserved As Long
 End Type
 
-Type T22A6
+Type TResObject
   Type_3 As Integer
   Childs As Integer
   index As Integer
   Name_4 As String
 End Type
 
-Global ResObjects0() As T22A6
+Global ResObjects0() As TResObject
 Global ResRootCount As Integer
 Global gv0D04(16) As String
 Type ResourceChildType
@@ -457,7 +461,7 @@ Type ResourceChildType
   Reserved As Long
 End Type
 
-Type T23BE
+Type TResObject1
   Type_3 As Integer
   Size As Integer
   FlagWord As Integer
@@ -466,11 +470,11 @@ Type T23BE
   Name_4 As String
 End Type
 
-Global ResObjects1() As T23BE
+Global ResObjects1() As TResObject1
 Global ResObjsIndex As Integer
 Global Res_ID_gv0DC0 As Integer
 Global ResObjectsCount As Integer
-Global curResObjects1 As T23BE
+Global curResObjects1 As TResObject1
 Global curResID As Integer
 Global CurResOffset As Long
 Global ResSize As Long
@@ -487,7 +491,7 @@ Global Const gc0E26 = 2 ' &H2%
 Global Const gc0E28 = 3 ' &H3%
 Global Const gc0E2A = 5 ' &H5%
 Global Const gc0E2C = 6 ' &H6%
-Type T24BB
+Type TVBForm
   mSubroutinesNameLen As Integer
   frmOffset As Integer
   M24D0 As Integer
@@ -513,7 +517,7 @@ Type T24EF
 End Type
 
 Global gv0EE2(7) As Integer
-'Type T253E
+'Type TControlItem
 '  Type_3 As Integer
 '  ResIDAssoc As Integer
 '  M_2_curr As Integer
@@ -525,7 +529,7 @@ Global gv0EE2(7) As Integer
 'End Type
 
 Global VBControlNames(256) As String
-Global gControlItems(256) As T253E
+Global gControlItems(256) As TControlItem
 Global VBX_Names_Count As Integer
 Global gFormsCount As Integer
 Global gControlItemsCount As Integer
@@ -536,14 +540,14 @@ Global Start_Form_Index As Integer
 Global Proj_IconForm As Integer
 Global Start_Form_Res As Integer
 Global gv0F88 As Integer
-Type T25D3
+Type TVBDefObject
   id_5 As Integer
   mFrmCount As Integer
   id_add_5 As Integer
   Name_4 As String
 End Type
 
-Global gVBObjsDefs(512) As T25D3
+Global gVBObjsDefs(512) As TVBDefObject
 Global gv0FD2 As Integer
 Type T2619
   id_5 As Integer
@@ -663,7 +667,7 @@ Type T2B62
   M_4_sub As Long
 End Type
 
-Type T2BA1
+Type TControlData
   M23B8 As Integer
   M1DF4 As Integer
   M2A26 As Integer
@@ -680,7 +684,7 @@ Type T2BA1
   M2A0D As Integer
 End Type
 
-Global gKnowControlsData() As T2BA1
+Global gKnowControlsData() As TControlData
 Global gKnowControlsCount As Integer
 Type T2BFB
   Type_3 As Integer
@@ -691,13 +695,13 @@ Global gv1444() As T2BFB
 Global gv1476 As Integer
 Global gv1478() As Integer
 Global gv14AA As Integer
-Type T2C26
+Type TEventName
   Name_4 As String
   M2C33 As String
   M1CC7 As String
 End Type
 
-Global g_EventNames() As T2C26
+Global g_EventNames() As TEventName
 Global gv150E As Integer
 Global gv1510() As Integer
 Global gv1542 As Integer
@@ -721,18 +725,20 @@ End Type
 Global VBdis_String As String
 Global ATK9B_VBDat_1 As T2CC5
 Global AltToken_9Bit As Integer
-Type T2D0F
+
+' I don't know what it means...
+Type TVB9BitToken
   M2D1C As Integer
   M2D22 As Integer
   M2CE2 As Integer
 End Type
 
-Type T2D29
-  Token9Bit(511) As T2D0F
+Type TVBTokens
+  Token9Bit(511) As TVB9BitToken
   M2D3C(96) As Integer
 End Type
 
-Global VBdis_Struct As T2D29
+Global VBdis_Struct As TVBTokens
 Type T2F11
   AltToken As Integer
   iToken As Integer
@@ -814,9 +820,9 @@ Global Const b0001_0000_DecompilationDone = 16 ' &H10%
 Global Const b0010_0000_FormsCombined = 32 ' &H20%
 
 Global ScanOnly As Integer
-Global gFrmStruct() As T24BB
+Global gFrmStruct() As TVBForm
 Global FrmFilesCount As Integer
-Global curFrmStruct As T24BB
+Global curFrmStruct As TVBForm
 Global NewFileExt As Integer
 Global gSubroutinesNameLen As Integer
 Global g_TKStruct() As T24EF

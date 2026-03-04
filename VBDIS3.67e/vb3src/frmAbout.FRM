@@ -143,16 +143,16 @@ Private Sub dum303_Click ()
 End Sub
 
 Private Sub Form_Load ()
-Dim l001A As String
+   Dim lCrackedAndFucked As String
 
-44010
-  dum203.Picture = CurForm_gv0BC0.Icon
-  Caption = "DoDi's " & App.Title
-  l001A = " cracked Demo + Src :)"
-  dum903 = gc031A & gc031E & l001A
-  If Left$(dum703, 1) <> "<" Then
-  Else
-    Height = Height - (ScaleHeight - dum803.Top)
-  End If
+   44010
+   dum203.Picture = CurForm_gv0BC0.Icon
+   Caption = "DoDi's " & App.Title
+   lCrackedAndFucked = " cracked Demo + Src :)"
+   dum903 = gVersionStr & gRevisionStr & sCrackedAndFucked
+   If Left$(dum703, 1) <> "<" Then
+   Else
+      Height = Height - (ScaleHeight - dum803.Top)
+   End If
 End Sub
 

@@ -307,7 +307,7 @@ On Error GoTo RunTErr
   End If
   
   If statflags And b0100_ScanDone Then
-    DispStatus Disp_Lvl, Scanning & gIn_FileNameAndExt
+    DispStatus Disp_Lvl, sScanning & gIn_FileNameAndExt
     ScanExe
     FrmMain.dum700.Value = 1
 
@@ -327,7 +327,7 @@ On Error GoTo RunTErr
   If statflags And b1000_SubroutinesScanned Then
     If (gDecompileStatus And b1000_SubroutinesScanned) = 0 Then
       FrmMain.lb_Log.Clear
-      DispStatus Disp_Lvl, Scanning & CurFrmName
+      DispStatus Disp_Lvl, sScanning & CurFrmName
       ScanSubroutineCalls
       gDecompileStatus = gDecompileStatus Or b1000_SubroutinesScanned
       ClearLogUntil Disp_Lvl
@@ -392,13 +392,13 @@ On Error GoTo RunTErr
  'Combine Forms
   If statflags And b0010_0000_FormsCombined Then
     FrmMain.lb_Log.Clear
-    DispStatus Disp_Lvl, gc03C6
+    DispStatus Disp_Lvl, sCombiningCodeAndForms
     gDecompileStatus = gDecompileStatus Or b0010_0000_FormsCombined
     CombineFrms
     bPrjFilesCreated = True
     
     If gDecompileStatus And b0010_0000_FormsCombined Then
-      DispLog2 Disp_Lvl, gc03CA
+      DispLog2 Disp_Lvl, sDecompilingFinish
     Else
       DispLog2 Disp_Lvl, "Now save *.FRM as text, please"
     End If

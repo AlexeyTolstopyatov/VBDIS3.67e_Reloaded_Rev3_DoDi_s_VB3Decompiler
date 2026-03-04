@@ -131,7 +131,7 @@ Dim l0046 As Integer
     End If
     If Len(l0044) = 0 Then l0044 = "*.*"
   End If
-  Caption = gc03CE & l0044
+  Caption = sOpen & l0044
   dum502.Path = dum602.List(dum602.ListIndex)
   dum502.Pattern = l0044
 End Sub

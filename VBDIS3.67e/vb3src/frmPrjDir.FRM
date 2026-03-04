@@ -60,37 +60,38 @@ End
 Option Explicit
 
 Private Sub Cmd_New_Click ()
-Dim newDir As String
-Dim CurrentDir As String
+    Dim newDir As String
+    Dim CurrentDir As String
 
 36010
-  newDir = txt_newDir
-  If Len(newDir) = 0 Then Beep: Exit Sub
+    newDir = txt_newDir
+    If Len(newDir) = 0 Then Beep: Exit Sub
   
-  CurrentDir = DirListBox.List(DirListBox.ListIndex)
-  If Right$(CurrentDir, 1) <> "\" Then CurrentDir = CurrentDir & "\"
-  CurrentDir = CurrentDir & newDir
+    CurrentDir = DirListBox.List(DirListBox.ListIndex)
 
-On Error Resume Next
-  MkDir CurrentDir
-  
-  DirListBox.Path = CurrentDir
-  
-  If Err Then Beep: Exit Sub
-  
-  gWorkDir = CurrentDir & "\"
+    If Right$(CurrentDir, 1) <> "\" Then CurrentDir = CurrentDir & "\"
+
+    CurrentDir = CurrentDir & newDir
+
+    On Error Resume Next
+    MkDir CurrentDir
+    DirListBox.Path = CurrentDir
+
+    If Err Then Beep: Exit Sub
+
+    gWorkDir = CurrentDir & "\"
 End Sub
 
 Private Sub DrivelistBox_Change ()
 36020
-  On Error Resume Next
-  DirListBox.Path = DrivelistBox.Drive
+    On Error Resume Next
+    DirListBox.Path = DrivelistBox.Drive
 End Sub
 
 Private Sub dum201_Click ()
 36000
-  gWorkDir = DirListBox.Path
-  If Right$(gWorkDir, 1) <> "\" Then gWorkDir = gWorkDir & "\"
-  Hide
+    gWorkDir = DirListBox.Path
+    If Right$(gWorkDir, 1) <> "\" Then gWorkDir = gWorkDir & "\"
+    Hide
 End Sub
 

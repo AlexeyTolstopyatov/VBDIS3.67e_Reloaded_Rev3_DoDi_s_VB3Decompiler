@@ -113,16 +113,18 @@ Dim EntryTableRecord2 As EntryTableStruct2
     Case 0
       l00BE = l00BE + EntryType
     
+    ' Moveable Entry defined:
     Case &HFF
       While EntryType
         Get hVBFile, , EntryTableRecord
+        ' Following linear logic: entry bundle contains [count, segment#, [..][..][..][..]]
         gv064C(l00BE).M_4_sub = Asc(EntryTableRecord.M_4_sub)
         gv064C(l00BE).segm0 = Asc(EntryTableRecord.M1C09)
         gv064C(l00BE).Size_M13F4 = EntryTableRecord.M1BEB
         EntryType = EntryType - 1
         l00BE = l00BE + 1
       Wend
-    
+    ' Fixed Entry defined: 
     Case Else
       While EntryType
         Get hVBFile, , EntryTableRecord2

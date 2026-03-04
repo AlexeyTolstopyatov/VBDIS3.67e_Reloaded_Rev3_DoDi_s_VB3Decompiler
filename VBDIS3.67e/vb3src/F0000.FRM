@@ -169,142 +169,138 @@ Option Explicit
 Dim BoxesCleared As Integer
 
 Private Sub a400_Click ()
-
 42100
-  frmAbout.Show 1
+    frmAbout.Show 1
 End Sub
 
 Private Sub a500_Click ()
-
 42120
-  End
+    End
 End Sub
 
 Private Sub dum200_Change ()
 42060
-  duma00.Clear
-  sub1080 dum200
+    duma00.Clear
+    sub1080 dum200
 End Sub
 
 Private Sub dum400_Click ()
 42020
-  duma00.AddItem getFrmNamebyOffbyIdx(g_CurSub)
-  DoEvents
+    duma00.AddItem getFrmNamebyOffbyIdx(g_CurSub)
+    DoEvents
 End Sub
 
 Private Sub dum500_Click ()
 42010
-  dum200.Text = ModulFileNames(NewFileExt)
-  DoEvents
+    dum200.Text = ModulFileNames(NewFileExt)
+    DoEvents
 End Sub
 
 Private Sub dum700_Click ()
 42030
-  BoxesCleared = False
+    BoxesCleared = False
 End Sub
 
 Private Sub dum800_Click ()
 42040
-  BoxesCleared = 1
-  Caption = gIn_FileFulPath
-  dum200.Clear
-  duma00.Clear
-  dum900.Clear
-  DoEvents
+    BoxesCleared = 1
+    Caption = gIn_FileFulPath
+    dum200.Clear
+    duma00.Clear
+    dum900.Clear
+    DoEvents
 End Sub
 
 Private Sub dum900_Change ()
 42050
-  sub1080 dum900
+    sub1080 dum900
 End Sub
 
 Private Sub duma00_Change ()
 42070
-  sub1080 duma00
+    sub1080 duma00
 End Sub
 
 Private Sub Form_Load ()
-
 'frm_ProvideCtrlNames.Show
 'Stop
 'Exit Sub
- Dim LogListCount%
+    Dim LogListCount%
 
 42080
-  Set CurForm_gv0BC0 = Me
-  
-  Show
-  
-  DispStatus LogListCount, sInitializing
-  
-  BoxesCleared = 1
-  sub0E83 LogListCount
-  ClearLogUntil LogListCount
-  
-  processCommandline
-'  mi_Open_Click
+    Set CurForm_gv0BC0 = Me
+
+    Show
+
+    DispStatus LogListCount, sInitializing
+
+    BoxesCleared = 1
+    sub0E83 LogListCount
+    ClearLogUntil LogListCount
+
+    processCommandline
+    'mi_Open_Click
 End Sub
 
 Private Sub Form_Unload (Cancel As Integer)
-
 42090
-  End
+    End
 End Sub
 
 Private Sub mi_CombineForms_Click ()
-
 42110
-  StartDecompile b0010_0000_FormsCombined, Me
+    StartDecompile b0010_0000_FormsCombined, Me
 End Sub
 
 Private Sub mi_Improve_Click ()
 42140
-' Redo Decompilation & SubroutinesScan
-  gDecompileStatus = gDecompileStatus And Not (b0001_0000_DecompilationDone Or b1000_SubroutinesScanned)
-  
-  StartDecompile b0001_0000_DecompilationDone, Me
-  
+    ' Redo Decompilation & SubroutinesScan
+    gDecompileStatus = gDecompileStatus And Not (b0001_0000_DecompilationDone Or b1000_SubroutinesScanned)
+
+    StartDecompile b0001_0000_DecompilationDone, Me
 End Sub
 
 Private Sub mi_Open_Click ()
-
 42130
-  mi_CombineForms.Enabled = False
-  
-  gDecompileStatus = 0
-  
-  StartDecompile b0001_0000_DecompilationDone, Me
-  
-  If gDecompileStatus And b0001_0000_DecompilationDone Then
-    mi_Improve.Enabled = True
-    mi_CombineForms.Enabled = True
-  End If
+    mi_CombineForms.Enabled = False
+
+    gDecompileStatus = 0
+
+    StartDecompile b0001_0000_DecompilationDone, Me
+
+    If gDecompileStatus And b0001_0000_DecompilationDone Then
+        mi_Improve.Enabled = True
+        mi_CombineForms.Enabled = True
+    End If
 End Sub
 
 Private Sub processCommandline ()
-   CommandlineMode = Len(Command)
-   
-   If CommandlineMode Then
-      mi_Open_Click
-   End If
-   
-   CommandlineMode = 0
-   
+    CommandlineMode = Len(Command)
+
+    If CommandlineMode Then
+        mi_Open_Click
+    End If
+
+    CommandlineMode = 0
+
 End Sub
 
 Private Sub sub1080 (p0044 As ComboBox)
-Static m0046 As Integer
-
+    Static m0046 As Integer
 42000
-  If m0046 Then Exit Sub
-  m0046 = True
-  If BoxesCleared Then
-    p0044.AddItem p0044.Text
-    p0044.ListIndex = p0044.NewIndex
-    DoEvents
-  Else
-    Beep
-  End If
-  m0046 = False
+    If m0046 Then 
+        Exit Sub
+    
+    m0046 = True
+    
+    If BoxesCleared Then
+        p0044.AddItem p0044.Text
+        p0044.ListIndex = p0044.NewIndex
+        DoEvents
+    Else
+        Beep
+    End If
+    
+    m0046 = False
 End Sub
 

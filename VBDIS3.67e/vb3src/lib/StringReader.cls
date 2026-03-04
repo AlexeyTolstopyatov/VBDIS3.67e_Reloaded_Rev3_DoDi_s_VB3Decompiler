@@ -33,7 +33,7 @@ Public mStorePos As Long
 Public DisableAutoMove As Boolean
 
 Public Sub Truncate()
-   Data = Left(Data, Position)
+    Data = Left(Data, Position)
 End Sub
 
 
@@ -42,14 +42,9 @@ Public Property Get Stream(Length As Long) As StringReader
     Stream.Data = FixedString(Length)
 End Property
 
-
-
-
-
 Public Property Let zeroString(ByVal vData As String)
     Stop
 End Property
-
 
 Public Property Get zeroString() As String
    Dim EndOfZeroString As Long
@@ -60,22 +55,13 @@ Public Property Get zeroString() As String
    
 End Property
 
-
-
-
-
-
 Public Property Let Length(ByVal vData As Long)
     Stop 'not implemented
 End Property
 
-
 Public Property Get Length() As Long
     Length = Len(mvardata)
 End Property
-
-
-
 
 Public Sub RestorePos()
    Position = mStorePos
@@ -85,22 +71,18 @@ Public Sub StorePos()
    mStorePos = Position
 End Sub
 
-
 Public Property Let ToMove(ByVal vData As Long)
    If DisableAutoMove Then Exit Property
    Move (vData)
 End Property
 
-
 Public Property Let Position(vData As Long)
     mvarPosition = limit(vData, Len(mvardata), 0) + 1
 End Property
 
-
 Public Property Get Position() As Long
     Position = mvarPosition - 1
 End Property
-
 
 Private Function StrtoLng(ByVal Value$) As Long
    MemCopyStrToLng StrtoLng, Value, 4
@@ -120,9 +102,9 @@ Public Property Let EOS(ByVal vData As Boolean)
 End Property
 '// get_EOS - Forward to End Of String
 Public Property Get EOS() As Boolean
- '  EOS = Position >= Len(mvardata)
- 'optimised
- '  EOS = (mvarPosition - 1) >= Len(mvardata)
+    ' EOS = Position >= Len(mvardata)
+    'optimised
+    ' EOS = (mvarPosition - 1) >= Len(mvardata)
     EOS = mvarPosition > Len(mvardata)
 End Property
 
@@ -147,7 +129,7 @@ End Function
 Public Function FindString(String_To_Find$, Optional Range)  ', Optional Alternativ_String_To_Find) As Long
    If IsMissing(Range) Then Range = Len(mvardata)
    
-'   Findstring = InStr(1, mid$(mvarData, mvarPosition, Range), String_To_Find)
+    ' Findstring = InStr(1, mid$(mvarData, mvarPosition, Range), String_To_Find)
     If bSearchBackward Then
       FindString = InStrRev(mvardata, String_To_Find, mvarPosition)
       
@@ -156,36 +138,31 @@ Public Function FindString(String_To_Find$, Optional Range)  ', Optional Alterna
    
     End If
       
-   'Test if out of range
+    'Test if out of range
     If Abs(mvarPosition - FindString - 1) > Range Then
        FindString = 0
     End If
   
    
-'   If IsMissing(Alternativ_String_To_Find = False) And (Findstring = 0) Then
-'   Findstring = InStr(1, mid$(mvarData, Position, Range), String_To_Find)
-   
- 
- ' If string was found
-   If FindString Then
-     
-     'Return start of String
-'      Findstring = (Findstring - 1) + Position
-      FindString = (FindString - 1)
- 
-     
-     'seek at the end of found String
-      ToMove = (FindString - Position) + Len(String_To_Find)
+    ' If IsMissing(Alternativ_String_To_Find = False) And (Findstring = 0) Then
+    ' Findstring = InStr(1, mid$(mvarData, Position, Range), String_To_Find)
+    ' If string was found
+    If FindString Then
+        'Return start of String
+        '      Findstring = (Findstring - 1) + Position
+        FindString = (FindString - 1)
 
-     
-   End If
+
+        'seek at the end of found String
+        ToMove = (FindString - Position) + Len(String_To_Find)
+    End If
 End Function
 
 Public Property Let FixedString(Optional ByVal Length& = -1, vData As String)
     If Length <= 0 Then Length = Len(vData)
     If Length <= 0 Then Exit Property
     
-   'Enlarge Buffer if necessary
+    ' Enlarge Buffer if necessary
     Dim enlarge&
     enlarge = (Length + mvarPosition - 1) - Len(mvardata)
     If enlarge >= 1 Then mvardata = mvardata & Space(enlarge)
@@ -241,36 +218,29 @@ End Property
 
 
 Public Property Let int8(vData As Long)
-'    FixedString(1) = LngtoStr(vData)
-'    FixedString(1) = ChrB(vData) & ChrB(0)
+    'FixedString(1) = LngtoStr(vData)
+    'FixedString(1) = ChrB(vData) & ChrB(0)
     FixedString(1) = ChrW(vData) ' & ChrB(0)
 End Property
 
 
 
 Public Property Get int8() As Long
-'    int8 = StrtoLng(FixedString(1))
-'    int8 = Asc(FixedString(1))
-'    Debug.Assert AscB(Mid(mvardata, mvarPosition, 1)) = Asc(Mid(mvardata, mvarPosition, 1))
+    'int8 = StrtoLng(FixedString(1))
+    'int8 = Asc(FixedString(1))
+    'Debug.Assert AscB(Mid(mvardata, mvarPosition, 1)) = Asc(Mid(mvardata, mvarPosition, 1))
     int8 = Asc(Mid$(mvardata, mvarPosition, 1))
-'    int8 = AscB(MidB(StrConv(mvardata, vbFromUnicode), mvarPosition, 1))
-
+    'int8 = AscB(MidB(StrConv(mvardata, vbFromUnicode), mvarPosition, 1))
     ToMove = 1
-
-
-
 End Property
 
 'Public Property Let int8Sig(vData As Long)
 '    FixedString(1) = LngtoStr(vData)
 'End Property
 
-
 Public Property Get int8Sig() As Long
-
-   int8Sig = StrtoLng(FixedString(1))
-   int8Sig = int8Sig Or -(int8Sig And &H80)
-
+    int8Sig = StrtoLng(FixedString(1))
+    int8Sig = int8Sig Or -(int8Sig And &H80)
 End Property
 
 
@@ -291,9 +261,7 @@ Public Sub CopyData(src&, Dest&, Optional size = -1)
    tmpstr = FixedString(size)
    
    Position = Dest
-   FixedString(size) = tmpstr
-   
-   
+   FixedString(size) = tmpstr   
 End Sub
 
 Private Sub Class_Initialize()
